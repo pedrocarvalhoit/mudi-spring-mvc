@@ -1,6 +1,7 @@
 package br.com.blackbelt.mvc.mudi.repository;
 
 import br.com.blackbelt.mvc.mudi.model.Pedido;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
@@ -9,14 +10,6 @@ import javax.persistence.Query;
 import java.util.List;
 
 @Repository
-public class PedidoRepository {
-
-    @PersistenceContext
-    private EntityManager entityManager;
-
-    public List<Pedido> recuperaTodosOsPedidos(){
-        Query query = entityManager.createQuery("SELECT p FROM Pedido p", Pedido.class); //Cita qual classe buscar
-        return query.getResultList();
-    }
+public interface PedidoRepository  extends JpaRepository<Pedido, Long> {
 
 }

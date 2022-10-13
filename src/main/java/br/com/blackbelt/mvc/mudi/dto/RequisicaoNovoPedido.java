@@ -1,6 +1,7 @@
 package br.com.blackbelt.mvc.mudi.dto;
 
 import br.com.blackbelt.mvc.mudi.model.Pedido;
+import br.com.blackbelt.mvc.mudi.model.StatusPedido;
 
 import javax.validation.constraints.NotBlank;
 
@@ -54,6 +55,7 @@ public class RequisicaoNovoPedido {
         pedido.setNomeProduto(nomeProduto);
         pedido.setUrlImagem(urlImagem);
         pedido.setUrlProduto(urlProduto);
+        pedido.setStatus(StatusPedido.AGUARDANDO);
         return pedido;
     }
 }

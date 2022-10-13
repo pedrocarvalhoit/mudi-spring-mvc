@@ -33,7 +33,7 @@ public class PedidoController {
 
         Pedido pedido = requisicao.toPedido();//Passa os dados do pedido cadastrado para este pedido
         pedidoRepository.save(pedido);//Salva no db
-        return "pedido/formulario";
+        return "redirect:/home";
     }
 
 }

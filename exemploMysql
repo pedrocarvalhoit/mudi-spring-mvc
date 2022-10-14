@@ -1,0 +1,63 @@
+INSERT DE EXEMPLO
+
+SELECT * FROM produto;
+
+INSERT INTO produto (data_da_entrega, descricao, nome_produto, status,
+ url_imagem, url_produto, valor_negociado)
+ VALUES ('2022/08/11', 'Queres trabalhar os teus peitorais, ombros e abdominais? Graças às suas posições horizontal, inclinada, sentada e reclinada, varia os teus treinos com o Banco 500. Ultra compacto',
+ 'BANCO DE MUSCULAÇÃO DOBRÁVEL', 'MUSCULACAO', 'https://contents.mediadecathlon.com/p2040913/k$6b644a3739453406da911e0322178352/sq/banco-de-musculacao-dobravel-inclinavelreclinavel-abdominais.jpg?format=auto&f=720x720',
+ 'https://www.decathlon.pt/p/banco-de-musculacao-dobravel-inclinavel-reclinavel-abdominais/_/R-p-330475?mc=8616804',
+ 100.00);
+
+ INSERT INTO produto (data_da_entrega, descricao, nome_produto, status,
+ url_imagem, url_produto, valor_negociado)
+ VALUES ('2022/08/11', 'Barra de musculação de alta resistência concebida pelas nossas equipas de conceção',
+ 'Barra de Musculação 2 m 28 mm', 'MUSCULACAO', 'https://contents.mediadecathlon.com/p1246726/k$4f4fe52cad4050b87dd8b438e7e4dc51/sq/barra-de-musculacao-2-m-28-mm.jpg?format=auto&f=720x720',
+ 'https://www.decathlon.pt/p/barra-de-musculacao-2-m-28-mm/_/R-p-9291?mc=8289900',
+ 45.00);
+
+  INSERT INTO produto (data_da_entrega, descricao, nome_produto, status,
+ url_imagem, url_produto, valor_negociado)
+ VALUES ('2022/08/11', 'Este rack permite um treino de musculação completo: em termos de peso do corpo (trações) e em cargas livres (agachamentos, desenvolvimento deitado, etc.) Arrumação fácil dos discos e da barra.',
+ 'Rack de Musculação para Agachamentos e Trações', 'MUSCULACAO', 'https://contents.mediadecathlon.com/p1103576/k$a45bbc6bdd8fb719bae1f5842038499d/sq/rack-de-musculacao-para-agachamentos-e-tracoes.jpg?format=auto&f=720x720',
+ 'https://www.decathlon.pt/p/rack-de-musculacao-para-agachamentos-e-tracoes/_/R-p-158534?mc=8380452',
+ 200.00);
+
+INSERT INTO produto (data_da_entrega, descricao, nome_produto, status,
+ url_imagem, url_produto, valor_negociado)
+ VALUES ('2022/08/11', 'Kit de musculação da bomba com 6 discos + barra + 2 discos de paragem 31mm',
+ 'Barra Treino Funcional', 'CROSSTRAINING',
+ 'https://contents.mediadecathlon.com/m7571831/k$498752e3f8675c4f623609deb313aa78/sq/kit-de-musculacao-da-bomba-com-6-discos-barra-2-discos-de-paragem-31mm.jpg?format=auto&f=720x720',
+'https://www.decathlon.pt/p/mp/gladiatorfit/kit-de-musculacao-da-bomba-com-6-discos-barra-2-discos-de-paragem-31mm/_/R-p-9dff3de4-21b9-48f8-aaf4-7b7191a82c87?mc=9dff3de4-21b9-48f8-aaf4-7b7191a82c87_c255&c=MULTICOLORIDO', 177.90);
+
+
+INSERT INTO produto (data_da_entrega, descricao, nome_produto, status,
+ url_imagem, url_produto, valor_negociado)
+ VALUES ('2022/08/11', 'Kit de musculação da bomba com 6 discos + barra + 2 discos de paragem 31mm',
+ 'Barra Treino Funcional', 'CROSSTRAINING',
+ 'https://contents.mediadecathlon.com/m7571831/k$498752e3f8675c4f623609deb313aa78/sq/kit-de-musculacao-da-bomba-com-6-discos-barra-2-discos-de-paragem-31mm.jpg?format=auto&f=720x720',
+'https://www.decathlon.pt/p/mp/gladiatorfit/kit-de-musculacao-da-bomba-com-6-discos-barra-2-discos-de-paragem-31mm/_/R-p-9dff3de4-21b9-48f8-aaf4-7b7191a82c87?mc=9dff3de4-21b9-48f8-aaf4-7b7191a82c87_c255&c=MULTICOLORIDO', 177.90);
+
+
+INSERT INTO produto (data_da_entrega, descricao, nome_produto, status,
+ url_imagem, url_produto, valor_negociado)
+ VALUES ('2022/08/11', 'Este ergómetro é um produto perfeito para treinar a parte superior do corpo. Este modelo permite 9 níveis de resistência diferentes. Plataforma incluída. Dimensões: 130x60x214cm. Peso: 51kg.',
+ 'AIR SKI', 'CROSSTRAINING',
+ 'https://contents.mediadecathlon.com/m5222489/k$cb298797fb1ada90a96ced1d2f4c167c/sq/air-ski.jpg?f=960x960',
+'https://www.decathlon.pt/p/mp/topgim/air-ski/_/R-p-e3ddc966-c485-4d2a-99aa-ac19b2e8f8ed?mc=e3ddc966-c485-4d2a-99aa-ac19b2e8f8ed_c1&c=PRETO', 549.02);
+
+
+INSERT INTO produto (data_da_entrega, descricao, nome_produto, status,
+ url_imagem, url_produto, valor_negociado)
+ VALUES ('2022/08/11', 'INOVAÇÃO DECATHLON: uma bicicleta elíptica de utilização intensiva ocupa muito espaço. Assim, concebemos esta EL700 com um sistema de dobragem inteligente que reduz o seu tamanho em 40%!',
+ 'Bicicleta Elíptica ', 'CARDIO',
+ 'https://contents.mediadecathlon.com/p2196186/k$a1e4ea3d6eb9b30f0804802c90d6e3eb/sq/bicicleta-eliptica-roda-dianteira-dobravel-autoalimentada-e-conectada-700.jpg?format=auto&f=720x720',
+'https://www.decathlon.pt/p/bicicleta-eliptica-roda-dianteira-dobravel-autoalimentada-e-conectada-700/_/R-p-324257?mc=8580899', 1000.00);
+
+INSERT INTO produto (data_da_entrega, descricao, nome_produto, status,
+ url_imagem, url_produto, valor_negociado)
+ VALUES ('2022/08/11', 'Concebida para a prática regular de corrida de 0 a 22 km/h em casa com subidas ou descidas.',
+ 'Passadeira de Corrida Nordictrack Commercial 1750', 'CARDIO',
+ 'https://contents.mediadecathlon.com/p2227461/k$05726e6b203c835aa333caebd3558813/sq/passadeira-de-corrida-nordictrack-commercial-1750.jpg?format=auto&f=720x720',
+'https://www.decathlon.pt/p/passadeira-de-corrida-nordictrack-commercial-1750/_/R-p-X8660523?mc=8660523', 1800.00);
+

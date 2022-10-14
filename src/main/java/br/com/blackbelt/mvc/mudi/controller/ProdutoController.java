@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import javax.validation.Valid;
 
 @Controller
-@RequestMapping("pedido")//Todas as requisições para pedido serão mapeadas aqui
+@RequestMapping("produto")//Todas as requisições para pedido serão mapeadas aqui
 public class ProdutoController {
 
     @Autowired

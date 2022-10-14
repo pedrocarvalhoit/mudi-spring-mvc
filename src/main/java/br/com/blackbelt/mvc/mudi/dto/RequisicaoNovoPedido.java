@@ -1,7 +1,7 @@
 package br.com.blackbelt.mvc.mudi.dto;
 
-import br.com.blackbelt.mvc.mudi.model.Pedido;
-import br.com.blackbelt.mvc.mudi.model.StatusPedido;
+import br.com.blackbelt.mvc.mudi.model.Produto;
+import br.com.blackbelt.mvc.mudi.model.StatusProduto;
 
 import javax.validation.constraints.NotBlank;
 
@@ -49,13 +49,13 @@ public class RequisicaoNovoPedido {
         this.descricao = descricao;
     }
 
-    public Pedido toPedido() {
-        Pedido pedido = new Pedido();
-        pedido.setDescricao(descricao);
-        pedido.setNomeProduto(nomeProduto);
-        pedido.setUrlImagem(urlImagem);
-        pedido.setUrlProduto(urlProduto);
-        pedido.setStatus(StatusPedido.AGUARDANDO);
-        return pedido;
+    public Produto toPedido() {
+        Produto produto = new Produto();
+        produto.setDescricao(descricao);
+        produto.setNomeProduto(nomeProduto);
+        produto.setUrlImagem(urlImagem);
+        produto.setUrlProduto(urlProduto);
+        produto.setStatus(StatusProduto.MUSCULACAO);
+        return produto;
     }
 }

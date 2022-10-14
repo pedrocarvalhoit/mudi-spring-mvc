@@ -8,45 +8,45 @@
         <div th:replace="~{base::logo}"></div>
 
         <div class="container">
-            <div th:replace="~{base::titulo('Meus Pedidos')}"> </div>
+            <div th:replace="~{base::titulo('Todos Produtos')}"> </div>
 
-            <nav class="navbar navbar-expand navbar-Light bg-Light d-flex justify-content-between mb-3">
+            <nav class="navbar navbar-expand navbar-light bg-light d-flex justify-content-between mb-3">
                 <div class="navbar-nav">
-                    <a class="nav-item nav-link active" href="">Todos</a>
-                    <a class="nav-item nav-link" href="">Aguardando</a>
-                    <a class="nav-item nav-link" href="">Aprovado</a>
-                    <a class="nav-item nav-link" href="">Entregue</a>
+                    <a th:classappend="${status} == null ? 'active'" class="nav-item nav-link" href="/home">Todos</a>
+                    <a th:classappend="${status} == 'musculacao' ? 'active'" class="nav-item nav-link" href="/home/musculacao">Musculação</a>
+                    <a th:classappend="${status} == 'crosstraining' ? 'active'" class="nav-item nav-link" href="/home/crossTraining">CrossTraining</a>
+                    <a th:classappend="${status} == 'cardio' ? 'active'" class="nav-item nav-link" href="/home/cardio">Cardio</a>
                 </div>
-                <a href="/pedido/formulario"><button class="btn btn-outline-secondary my-2 my-sm-0 ">Novo</button></a>
+                <a href="/produto/formulario"><button class="btn btn-outline-secondary my-2 my-sm-0 ">Novo</button></a>
             </nav>
 
-            <div class="card mb-3" th:each="pedido : ${pedidos}"><!--Faz o for each no pedido-->
+            <div class="card mb-3" th:each="produto : ${produtos}"><!--Faz o for each no produto-->
 
-                <th:block th:switch = "${pedido.status}">
-                    <div th:case="'AGUARDANDO'" class="card-header alert-warning" th:text="${pedido.nomeProduto}">Nome do produto</div>
-                    <div th:case="'APROVADO'" class="card-header alert-success" th:text="${pedido.nomeProduto}"  >Nome do produto</div>
-                    <div th:case="'ENTREGUE'" class="card-header alert-dark" th:text="${pedido.nomeProduto}"  >Nome do produto</div>
+                <th:block th:switch = "${produto.status.name()}">
+                    <div th:case="'AGUARDANDO'" class="card-header alert-warning" th:text="${produto.nomeProduto}">Nome do produto</div>
+                    <div th:case="'APROVADO'" class="card-header alert-success" th:text="${produto.nomeProduto}"  >Nome do produto</div>
+                    <div th:case="'ENTREGUE'" class="card-header alert-dark" th:text="${produto.nomeProduto}"  >Nome do produto</div>
                 </th:block>
 
                 <div class="card-body">
                    <div class="row"> <!-- ROW define linhas pras DIVs incluídas -->
                         <div class="col-12 col-sm-8 mb-3"> <!--col-sm muda conforme o tamanho do disp./  espacamento entre itens MB-->
                             <div class="row">
-                                <div class="col-md-5">Valor: <span th:text="${pedido.valorNegociado}">200,99</span></div>
-                                <div class="col-md-7">Data da entrega: <span th:text="${pedido.dataDaEntrega}">10/02/2020</span></div>
+                                <div class="col-md-5">Valor: <span th:if="${produto.valorNegociado} != null" th:text="${'£ ' + #numbers.formatDecimal(produto.valorNegociado, 3, 'POINT', 2, 'COMMA')}">200,99</span></div>
+                                <div class="col-md-7">Data da entrega: <span th:text="${#temporals.format(produto.dataDaEntrega, 'dd/MM/yyyy')}">10/02/2020</span></div>
                             </div>
 
-                            <div>Produto</div>
-                            <div><input class="form-control" th:value="${pedido.urlProduto}" value="url do pedido"/></div>
+                            <div>Link:</div>
+                            <div><a class="form-control" th:href="${produto.urlProduto}" href="">Acessar produto</a></div>
 
-                            <div>Descrição</div>
+                            <div>Descrição:</div>
                             <div>
-                                <textarea class="form-control" th:text="${pedido.descricao}">descrição do produto</textarea>
+                                <textarea class="form-control" th:text="${produto.descricao}">descrição do produto</textarea>
                             </div>
                         </div>
                         <div class="col-12 col-sm-4">
                             <div>
-                                <img class="img-thumbnail" th:src="${pedido.urlImagem}" src=""/>
+                                <img class="img-thumbnail" th:src="${produto.urlImagem}" src=""/>
                             </div>
                         </div>
                    </div>

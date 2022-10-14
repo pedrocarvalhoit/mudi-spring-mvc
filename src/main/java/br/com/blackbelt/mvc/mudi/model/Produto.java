@@ -5,7 +5,7 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 
 @Entity
-public class Pedido {
+public class Produto {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,7 +19,7 @@ public class Pedido {
     private String descricao;
 
     @Enumerated(EnumType.STRING)//Anotação para criar coluna em forma de enum.
-    private StatusPedido status;
+    private StatusProduto status;
 
     public String getNomeProduto() {
         return nomeProduto;
@@ -69,11 +69,11 @@ public class Pedido {
         this.descricao = descricao;
     }
 
-    public StatusPedido getStatus() {
+    public StatusProduto getStatus() {
         return status;
     }
 
-    public void setStatus(StatusPedido status) {
+    public void setStatus(StatusProduto status) {
         this.status = status;
     }
 }

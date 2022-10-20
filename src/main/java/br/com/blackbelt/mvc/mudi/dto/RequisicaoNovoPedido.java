@@ -16,6 +16,7 @@ public class RequisicaoNovoPedido {
     @NotBlank
     private String urlImagem;
     private String descricao;
+    private StatusProduto status;
 
     public String getNomeProduto() {
         return nomeProduto;
@@ -49,13 +50,21 @@ public class RequisicaoNovoPedido {
         this.descricao = descricao;
     }
 
+    public StatusProduto getStatus() {
+        return status;
+    }
+
+    public void setStatus(StatusProduto status) {
+        this.status = status;
+    }
+
     public Produto toPedido() {
         Produto produto = new Produto();
         produto.setDescricao(descricao);
         produto.setNomeProduto(nomeProduto);
         produto.setUrlImagem(urlImagem);
         produto.setUrlProduto(urlProduto);
-        produto.setStatus(StatusProduto.MUSCULACAO);
+        produto.setStatus(status);
         return produto;
     }
 }

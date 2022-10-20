@@ -38,6 +38,14 @@
                         <label for="descricao">Descrição</label>
                         <textarea class="form-control" name="descricao" placeholder="descrição do produto"></textarea>
                     </div>
+                    <div class="form-group">
+                        <label for="status">Modalidade do produto</label>
+                        <input th:field="*{status}" th:errorclass="is-invalid" class="form-control" placeholder="modalidade do produto"/>
+                        <small>Informa qual a modalidade do produto, (MUSCULACAO,CROSSTRAINING,CARDIO).</small>
+                        <div class="invalid-feedback" th:erros="*{status}">
+                            Erros na modalidade do Produto
+                        </div>
+                    </div >
                     <button class="btn btn-outline-primary" type="submit">Cadastrar</button>
                 </form>
             </div>

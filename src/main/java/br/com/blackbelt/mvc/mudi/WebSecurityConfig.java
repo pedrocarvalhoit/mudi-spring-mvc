@@ -1,46 +1,53 @@
 package br.com.blackbelt.mvc.mudi;
 
-import org.springframework.context.annotation.Bean;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.provisioning.InMemoryUserDetailsManager;
-import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+
+import javax.sql.DataSource;
 
 @Configuration
 @EnableWebSecurity
-public class WebSecurityConfig  {
+public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
-    //Método que garante a autenticação
-   @Bean
-   public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-       http
-               .authorizeHttpRequests((requests) -> requests
-                       .antMatchers().permitAll()
-                       .anyRequest().authenticated()
-               )
-               .formLogin((form) -> form
-                       .loginPage("/login")
-                       .permitAll().defaultSuccessUrl("/home")
-               )
-               .logout(logout -> logout.logoutUrl("/logout"));
+    @Autowired
+    private DataSource dataSource;
 
-       return http.build();
-   }
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
+        http
+                .authorizeRequests()
+                .anyRequest().authenticated()
+                .and()
+                .formLogin(form -> form
+                        .loginPage("/login")
+                        //Direciona para home sempre que login tem sucesso
+                        .defaultSuccessUrl("/home", true)
+                        .permitAll()
+                )
+                //Define redirecionamento pra página de lougout
+                .logout(logout -> logout.logoutUrl("/logout"));
+    }
 
-    @Bean
-    public UserDetailsService userDetailsService() {
-        UserDetails user =
-                User.withDefaultPasswordEncoder()
-                        .username("pedro")
-                        .password("pedro")
-                        .roles("USER")
-                        .build();
+    //Método que salva usuário no banco de dados
+    @Override
+    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+        auth
+                .jdbcAuthentication()
+                .dataSource(dataSource)
+                .passwordEncoder(encoder);
 
-        return new InMemoryUserDetailsManager(user);
+//		UserDetails user =
+//				 User.builder()
+//					.username("maria")
+//					.password(encoder.encode("maria"))
+//					.roles("ADM")
+//					.build();
     }
 
 }

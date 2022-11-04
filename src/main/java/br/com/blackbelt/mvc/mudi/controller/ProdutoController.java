@@ -2,8 +2,11 @@ package br.com.blackbelt.mvc.mudi.controller;
 
 import br.com.blackbelt.mvc.mudi.dto.RequisicaoNovoPedido;
 import br.com.blackbelt.mvc.mudi.model.Produto;
+import br.com.blackbelt.mvc.mudi.model.User;
 import br.com.blackbelt.mvc.mudi.repository.ProdutoRepository;
+import br.com.blackbelt.mvc.mudi.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,6 +22,9 @@ public class ProdutoController {
     @Autowired
     ProdutoRepository produtoRepository;
 
+    @Autowired
+    UserRepository userRepository;
+
     @GetMapping("formulario")//Assim ficará /pedido/formulario
     public String formulario(RequisicaoNovoPedido requisicao){
         return "pedido/formulario";
@@ -30,7 +36,12 @@ public class ProdutoController {
             return "pedido/formulario";
         }
 
+        //Designa as requisições para o usuário que está logado
+        String username = SecurityContextHolder.getContext().getAuthentication().getName();
+        User user = userRepository.findByUsername(username);
+
         Produto produto = requisicao.toPedido();//Passa os dados do pedido cadastrado para este pedido
+        produto.setUser(user);
         produtoRepository.save(produto);//Salva no db
         return "redirect:/home";
     }

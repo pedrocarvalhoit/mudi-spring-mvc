@@ -4,6 +4,7 @@ import br.com.blackbelt.mvc.mudi.model.Produto;
 import br.com.blackbelt.mvc.mudi.model.StatusProduto;
 
 import javax.validation.constraints.NotBlank;
+import java.math.BigDecimal;
 
 public class RequisicaoNovoPedido {
 
@@ -11,6 +12,8 @@ public class RequisicaoNovoPedido {
 
     @NotBlank //Esta anotação aceita o cadastro apenas com preenchimento
     private String nomeProduto;
+    @NotBlank
+    private BigDecimal valorNegociado;
     @NotBlank
     private String urlProduto;
     @NotBlank
@@ -58,9 +61,18 @@ public class RequisicaoNovoPedido {
         this.status = status;
     }
 
+    public BigDecimal getValorNegociado() {
+        return valorNegociado;
+    }
+
+    public void setValorNegociado(BigDecimal valorNegociado) {
+        this.valorNegociado = valorNegociado;
+    }
+
     public Produto toPedido() {
         Produto produto = new Produto();
         produto.setDescricao(descricao);
+        produto.setValorNegociado(valorNegociado);
         produto.setNomeProduto(nomeProduto);
         produto.setUrlImagem(urlImagem);
         produto.setUrlProduto(urlProduto);

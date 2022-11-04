@@ -6,8 +6,6 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import javax.sql.DataSource;
@@ -32,24 +30,26 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                         .permitAll()
                 )
                 //Define redirecionamento pra página de lougout
-                .logout(logout -> logout.logoutUrl("/logout"));
+                .logout(logout -> logout.logoutUrl("/logout"))
+                .csrf().disable();
     }
 
     //Método que salva usuário no banco de dados
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+        //Criptogragia
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
         auth
                 .jdbcAuthentication()
                 .dataSource(dataSource)
                 .passwordEncoder(encoder);
 
-		UserDetails user =
-				 User.builder()
-					.username("maria")
-					.password(encoder.encode("maria"))
-					.roles("ADM")
-					.build();
+//		UserDetails user =
+//				 User.builder()
+//					.username("maria")
+//					.password(encoder.encode("maria"))
+//					.roles("ADM")
+//					.build();
     }
 
 }

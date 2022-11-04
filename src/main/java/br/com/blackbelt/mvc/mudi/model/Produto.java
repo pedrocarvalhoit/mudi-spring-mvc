@@ -18,6 +18,11 @@ public class Produto {
     private String urlImagem;
     private String descricao;
 
+    @ManyToOne(
+            fetch = FetchType.LAZY
+    )
+    private User user;
+
     @Enumerated(EnumType.STRING)//Anotação para criar coluna em forma de enum.
     private StatusProduto status;
 
@@ -75,5 +80,13 @@ public class Produto {
 
     public void setStatus(StatusProduto status) {
         this.status = status;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }

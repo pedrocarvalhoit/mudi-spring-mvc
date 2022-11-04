@@ -1,1 +1,2 @@
 Registration and exibition of gym products on mysql whit Spring mvc, Thymeleaf and Bootstrap.
+The idea is give to the Personal Trainer the possibility of create a list of products to send at each client, personalized by each demand.

@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.security.Principal;
 import java.util.List;
 
 @Controller
@@ -21,8 +22,8 @@ public class HomeController{
     ProdutoRepository produtoRepository;
 
     @GetMapping
-    public String home(Model model){
-        List<Produto> produtos = produtoRepository.findAll();//Lista os pedidos
+    public String home(Model model, Principal principal){ //Principal ingeta os dados do usuário logado
+        List<Produto> produtos = produtoRepository.findAllByUsuario(principal.getName());//Lista os pedidos por usuário
         model.addAttribute("produtos", produtos);
         return"home";
     }

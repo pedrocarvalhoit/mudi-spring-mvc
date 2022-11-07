@@ -21,7 +21,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                .anyRequest().authenticated()
+                //Permite vizualização da home por qualquer usuário
+                .antMatchers("/home/**")
+                    .permitAll()
+                .anyRequest()
+                        .authenticated()
                 .and()
                 .formLogin(form -> form
                         .loginPage("/login")
@@ -30,8 +34,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                         .permitAll()
                 )
                 //Define redirecionamento pra página de lougout
-                .logout(logout -> logout.logoutUrl("/logout"))
-                .csrf().disable();
+                .logout(logout ->{
+                    logout.logoutUrl("/logout")
+                            .logoutSuccessUrl("/home");
+                   //     .csrf().disable();
+                });
     }
 
     //Método que salva usuário no banco de dados

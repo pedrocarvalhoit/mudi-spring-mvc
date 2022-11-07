@@ -26,7 +26,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .formLogin(form -> form
                         .loginPage("/login")
                         //Direciona para home sempre que login tem sucesso
-                        .defaultSuccessUrl("/home", true)
+                        .defaultSuccessUrl("/usuario/produto", true)
                         .permitAll()
                 )
                 //Define redirecionamento pra página de lougout

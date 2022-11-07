@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import java.security.Principal;
 import java.util.List;
 
+/**A página HOME exibe todos os produtos ja cadastrados no site,
+ * a página usuário é que exibe os itens personlizados*/
 @Controller
 @RequestMapping("/home")
 public class HomeController{
@@ -23,7 +25,7 @@ public class HomeController{
 
     @GetMapping
     public String home(Model model, Principal principal){ //Principal ingeta os dados do usuário logado
-        List<Produto> produtos = produtoRepository.findAllByUsuario(principal.getName());//Lista os pedidos por usuário
+        List<Produto> produtos = produtoRepository.findAll();//Lista os pedidos por usuário
         model.addAttribute("produtos", produtos);
         return"home";
     }
@@ -40,5 +42,6 @@ public class HomeController{
     public String onError(){
         return "redirect:/home";//Redireciona pra home em caso de requisição errada
     }
+
 
 }

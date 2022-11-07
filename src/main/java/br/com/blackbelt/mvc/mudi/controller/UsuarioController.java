@@ -40,6 +40,6 @@ public class UsuarioController {
 
     @ExceptionHandler(IllegalArgumentException.class)//Exception que cuida da digitação errada
     public String onError(){
-        return "redirect:usuario/home";//Redireciona pra home em caso de requisição errada
+        return "redirect:/usuario/home";//Redireciona pra home em caso de requisição errada
     }
 }

@@ -18,4 +18,9 @@ public interface ProdutoRepository extends JpaRepository<Produto, Long> {
     @Query("SELECT p from Produto p join p.user u where u.username = :username")
     //Param mapeia o username solicitado no método para a query
     List<Produto> findAllByUsuario(@Param("username") String username);
+
+    @Query("SELECT p from Produto p join p.user u where u.username = :username and p.status = :status")
+    List<Produto> findByStatusEUsuario(@Param("status") StatusProduto statusProduto, @Param("username")String username);
+
+
 }

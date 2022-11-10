@@ -1,5 +1,7 @@
 package br.com.blackbelt.mvc.mudi.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -18,8 +20,9 @@ public class Produto {
     private String urlImagem;
     private String descricao;
 
+    @JsonIgnore //Garante que os dados do usuário não serão exibidos no JSON
     @ManyToOne(
-            fetch = FetchType.LAZY
+            fetch = FetchType.EAGER
     )
     private User user;
 

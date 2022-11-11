@@ -1,32 +1,34 @@
 <!DOCTYPE html>
-<html lang="pt" xmlns:th="http://www.w3.org/1999/xhtml" xmlns="">
+<html lang="pt" xmlns:th="http://www.w3.org/1999/xhtml" xmlns="" xmlns:v-bind="http://www.w3.org/1999/xhtml">
 
     <head th:replace="~{base :: head}"></head>
     <body onload="onLoad()">
         <div th:replace="~{base::logo}"></div>
 
         <div class="container" id="solicitacoes">
-            <div th:replace="~{base::titulo('Produtos Personalizados')}"> </div>
+            <div th:replace="~{base::titulo('Solicitar alterações')}"> </div>
+
+            <div class="card mb-3" v-for="produto in produtos"><!--Faz o for each no produto-->
+                <div class="card-header alert-dark">{{produto.nomeProduto}}</div>
 
                 <div class="card-body">
                    <div class="row"> <!-- ROW define linhas pras DIVs incluídas -->
                         <div class="col-12 col-sm-8 mb-3"> <!--col-sm muda conforme o tamanho do disp./  espacamento entre itens MB-->
                             <div class="row">
-                                <div class="col-md-5">Valor: <span th:if="${produto.valorNegociado} != null" th:text="${'£ ' + #numbers.formatDecimal(produto.valorNegociado, 3, 'POINT', 2, 'COMMA')}">200,99</span></div>
-                                <div class="col-md-7">Data da entrega: <span th:text="${#temporals.format(produto.dataDaEntrega, 'dd/MM/yyyy')}">10/02/2020</span></div>
+                                <div class="col-md-7">Motivo da alteração <input/></div>
                             </div>
 
                             <div>Link:</div>
-                            <div><a class="form-control" th:href="${produto.urlProduto}" href="">Acessar produto</a></div>
+                            <div><a class="form-control" v-bind:href="produto.urlProduto" >{{produto.nomeProduto}}</a></div>
 
                             <div>Descrição:</div>
                             <div>
-                                <textarea class="form-control" th:text="${produto.descricao}">descrição do produto</textarea>
+                                <textarea class="form-control">{{produto.descricao}}</textarea>
                             </div>
                         </div>
                         <div class="col-12 col-sm-4">
                             <div>
-                                <img class="img-thumbnail" th:src="${produto.urlImagem}" src=""/>
+                                <img class="img-thumbnail" v-bind:src="produto.urlImagem" src=""/>
                             </div>
                         </div>
                    </div>
@@ -34,15 +36,24 @@
             </div>
         </div>
         <script>
-            function onLoad(){
-                var app = new Vue({
-                    el : '#solicitacoes',
-                    data : {
-                        produtos:[]
-                    }
-                });
-            }
-        </script>
-        <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+            function onLoad() {
+				var app = new Vue(
+				{
+					el : '#solicitacoes',
+					data : {
+						produtos : []
+					},
+					mounted () {
+						axios
+					      .get('http://localhost:8080/api/produtos/meusProdutos')
+					      .then(response => (this.produtos = response.data))
+					}
+				});
+			}
+
+            </script>
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     </body>
 </html>

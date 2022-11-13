@@ -29,6 +29,16 @@ public class Produto {
     @Enumerated(EnumType.STRING)//Anotação para criar coluna em forma de enum.
     private StatusProduto status;
 
+    @OneToOne(
+            cascade = CascadeType.ALL,
+            mappedBy = "produto",
+            fetch = FetchType.LAZY
+    )
+    private Solicitacao solicitacao;
+
+    public Produto() {
+    }
+
     public String getNomeProduto() {
         return nomeProduto;
     }
@@ -91,5 +101,13 @@ public class Produto {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public Solicitacao getSolicitacao() {
+        return solicitacao;
+    }
+
+    public void setSolicitacao(Solicitacao solicitacao) {
+        this.solicitacao = solicitacao;
     }
 }

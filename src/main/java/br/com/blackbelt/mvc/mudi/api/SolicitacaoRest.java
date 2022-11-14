@@ -6,6 +6,7 @@ import br.com.blackbelt.mvc.mudi.model.Solicitacao;
 import br.com.blackbelt.mvc.mudi.repository.ProdutoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -20,7 +21,8 @@ public class SolicitacaoRest {
 
     //Spring pega os dados da requisição
     @PostMapping
-    public Solicitacao criaSolicitacao(RequisicaoNovaSolicitacao requisicao){
+    //REQUESTBODY pega os dados da requisicao
+    public Solicitacao criaSolicitacao(@RequestBody RequisicaoNovaSolicitacao requisicao){
         Optional<Produto> produtoBuscado = produtoRepository.findById(requisicao.getProdutoId());
         if(!produtoBuscado.isPresent()){
             return null;

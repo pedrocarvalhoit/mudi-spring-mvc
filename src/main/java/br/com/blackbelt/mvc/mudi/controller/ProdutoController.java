@@ -1,6 +1,6 @@
 package br.com.blackbelt.mvc.mudi.controller;
 
-import br.com.blackbelt.mvc.mudi.dto.RequisicaoNovoPedido;
+import br.com.blackbelt.mvc.mudi.dto.requisicaoNovoProduto;
 import br.com.blackbelt.mvc.mudi.model.Produto;
 import br.com.blackbelt.mvc.mudi.model.User;
 import br.com.blackbelt.mvc.mudi.repository.ProdutoRepository;
@@ -26,12 +26,12 @@ public class ProdutoController {
     UserRepository userRepository;
 
     @GetMapping("formulario")//Assim ficará /pedido/formulario
-    public String formulario(RequisicaoNovoPedido requisicao){
+    public String formulario(requisicaoNovoProduto requisicao){
         return "pedido/formulario";
     }
 
     @PostMapping("novo")//Esta classe mapea o cadastro
-    public String novo(@Valid RequisicaoNovoPedido requisicao, BindingResult result){//Anotação que garante a validação
+    public String novo(@Valid requisicaoNovoProduto requisicao, BindingResult result){//Anotação que garante a validação
         if(result.hasErrors()){//Garante que o formulário seja preenchido
             return "pedido/formulario";
         }

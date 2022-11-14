@@ -34,6 +34,7 @@ public class Produto {
             mappedBy = "produto",
             fetch = FetchType.LAZY
     )
+    @JsonIgnore
     private Solicitacao solicitacao;
 
     public Produto() {

@@ -10,7 +10,7 @@ public class Solicitacao {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String motivoTroca;
-    private String urlNovoProduto;
+    private String sugestaoTroca;
 
     @OneToOne(
             fetch = FetchType.LAZY
@@ -33,12 +33,12 @@ public class Solicitacao {
         this.motivoTroca = motivoTroca;
     }
 
-    public String getUrlNovoProduto() {
-        return urlNovoProduto;
+    public String getSugestaoTroca() {
+        return sugestaoTroca;
     }
 
-    public void setUrlNovoProduto(String urlNovoProduto) {
-        this.urlNovoProduto = urlNovoProduto;
+    public void setSugestaoTroca(String sugestaoTroca) {
+        this.sugestaoTroca = sugestaoTroca;
     }
 
     public Produto getProduto() {

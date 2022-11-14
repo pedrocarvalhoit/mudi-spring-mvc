@@ -6,7 +6,7 @@ import br.com.blackbelt.mvc.mudi.model.StatusProduto;
 import javax.validation.constraints.NotBlank;
 import java.math.BigDecimal;
 
-public class RequisicaoNovoPedido {
+public class requisicaoNovoProduto {
 
     //Os atributos precisam ter o mesmo nome do NAME dos INPUTS
 

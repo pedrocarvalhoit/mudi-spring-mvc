@@ -6,7 +6,7 @@ public class RequisicaoNovaSolicitacao {
 
     private Long produtoId;
     private String motivoTroca;
-    private String urlNovoProduto;
+    private String sugestaoTroca;
 
     public Long getProdutoId() {
         return produtoId;
@@ -24,18 +24,18 @@ public class RequisicaoNovaSolicitacao {
         this.motivoTroca = motivoTroca;
     }
 
-    public String getUrlNovoProduto() {
-        return urlNovoProduto;
+    public String getSugestaoTroca() {
+        return sugestaoTroca;
     }
 
-    public void setUrlNovoProduto(String urlNovoProduto) {
-        this.urlNovoProduto = urlNovoProduto;
+    public void setSugestaoTroca(String sugestaoTroca) {
+        this.sugestaoTroca = sugestaoTroca;
     }
 
     public Solicitacao toSolicitacao(){
         Solicitacao solicitacao = new Solicitacao();
         solicitacao.setMotivoTroca(this.motivoTroca);
-        solicitacao.setUrlNovoProduto(this.urlNovoProduto);
+        solicitacao.setSugestaoTroca(this.sugestaoTroca);
 
         return solicitacao;
     }

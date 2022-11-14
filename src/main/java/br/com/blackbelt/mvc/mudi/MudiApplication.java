@@ -8,6 +8,9 @@ import org.springframework.cache.annotation.EnableCaching;
 @SpringBootApplication
 public class MudiApplication {
 
+	//FALTANTE
+	/**Salvar os acessos no banco de dados
+	 * Enviar e salvar solicitações */
 	public static void main(String[] args) {
 		SpringApplication.run(MudiApplication.class, args);
 	}

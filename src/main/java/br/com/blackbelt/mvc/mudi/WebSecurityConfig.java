@@ -22,10 +22,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 .authorizeRequests()
                 //Permite vizualização da home por qualquer usuário
-                .antMatchers("/home/**")
-                    .permitAll()
+                .antMatchers("/home/**").permitAll()
+                .antMatchers("/produto/**").hasRole("PROFESSOR")
                 .anyRequest()
-                        .authenticated()
+                .authenticated()
                 .and()
                 .formLogin(form -> form
                         .loginPage("/login")

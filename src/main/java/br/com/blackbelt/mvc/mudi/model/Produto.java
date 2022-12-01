@@ -111,4 +111,11 @@ public class Produto {
     public void setSolicitacao(Solicitacao solicitacao) {
         this.solicitacao = solicitacao;
     }
+
+    @Override
+    public String toString() {
+        return "Produto{" +
+                "nomeProduto='" + nomeProduto + '\'' +
+                '}';
+    }
 }
